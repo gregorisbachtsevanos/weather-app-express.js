@@ -5,16 +5,16 @@ const weatherApi = 'http://api.weatherstack.com/current?access_key=23a2b28c79e14
 const mapbox = (address, callback) => {
 	
 	let url = mapboxApi.slice(0, 50) + encodeURIComponent(address) + mapboxApi.slice(50)
-	request({ url: url, json: true }, (err, res) => {
+	request({ url, json: true }, (err, { body }) => {
 		if(err){
 			callback('Unable to connect to to location services')
-		}else if (res.body.features.length === 0){
+		}else if (body.features.length === 0){
 			callback("Provide an existing city")
 		}else{
 			callback(undefined, {
-				longitude: res.body.features[0].geometry.coordinates[0],
-				latitude: res.body.features[0].geometry.coordinates[1],
-				location: res.body.features[0].place_name 
+				longitude: body.features[0].geometry.coordinates[0],
+				latitude: body.features[0].geometry.coordinates[1],
+				location: body.features[0].place_name 
 			})
 		}
 	})
@@ -22,13 +22,13 @@ const mapbox = (address, callback) => {
 
 const weather = (latitude, longitude, callback) => {
 	const url = `${weatherApi}${latitude},${longitude}`
-	request({ url: url, json: true}, (err, res) => {
+	request({ url, json: true}, (err, { body }) => {
 		if(err){
 			callback('Unable to connect to to location services')
-		}else if (res.body.error){
-			callback(res.body.error.info)
+		}else if (body.error){
+			callback(body.error.info)
 		}else{
-			callback(undefined, res.body.location)
+			callback(undefined, body.location, body.current)
 		}
 	})
 }
