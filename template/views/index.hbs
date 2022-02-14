@@ -1,0 +1,31 @@
+{{> header }}
+<div class="container">
+	{{!-- <h1>{{ title }}</h1> --}}
+	<div id="nav">
+		<form class="input-container">
+			<label>
+				<input type="text" id="input" placeholder="Location..." autocomplete="of">
+				<input type="submit" id="submit" value="Search">
+			</label>
+		</form>
+		<div id="info">
+			<p>Temperature <span class="extra-info" id="temperature"></span></p>
+			<hr>
+			<p>Feels Like <span class="extra-info" id="feels_like"></span></p>
+			<hr>
+			<p>Humidity <span class="extra-info" id="humidity"></span></p>
+			<hr>
+			<p>Visability <span class="extra-info" id="visability"></span></p>
+			<hr>
+			<p>Wind Speed <span class="extra-info" id="wind-speed"></span></p>
+			<hr>
+			<p>Weather Descriptions <span class="extra-info" id="weather-descriptions"></span></p>
+			<hr>
+		</div>
+	</div>
+	<div id="column">
+		<div class="container-result"></div>
+		<div id="map"></div>
+	</div>
+</div>
+{{> footer }}
