@@ -90,24 +90,27 @@ const mapShow = (lon, lat, style) => {
 
 submit.addEventListener('click', (e) => {
 	e.preventDefault()
-	column.style.display = 'block'
-
+		
+	
 	fetch(`http://127.0.0.1:3000/weather?address=${input.value}`)
-		.then(res => res.json())
-		.then(data => {
-
-			errorCheck(data);
-
-			displayInfo(data);
-
-		})
-		.catch(e => {
-			result.innerHTML =
-			/*html*/
-			`<div id="user-error">
-				<h4>Unexpected error!!!<h4>
-				<p>Something went wrong. Try again.</p>
-			</div>`
-		})
+	.then(res => res.json())
+	.then(data => {
+		
+		column.style.display = 'block'
+		errorCheck(data);
+		
+		displayInfo(data);
+		
+	})
+	.catch(e => {
+		column.style.display = 'block'
+		
+		result.innerHTML =
+		/*html*/
+		`<div id="user-error">
+		<h4>Unexpected error!!!<h4>
+		<p>Something went wrong. Try again.</p>
+		</div>`
+	})
 
 })
