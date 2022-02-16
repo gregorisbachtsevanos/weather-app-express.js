@@ -92,7 +92,7 @@ submit.addEventListener('click', (e) => {
 	e.preventDefault()
 		
 	
-	fetch(`http://127.0.0.1:3000/weather?address=${input.value}`)
+	fetch(`/weather?address=${input.value}`)
 	.then(res => res.json())
 	.then(data => {
 		

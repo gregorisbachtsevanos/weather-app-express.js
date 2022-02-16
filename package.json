@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js -e js,hbs"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +13,7 @@
     "express": "^4.17.2",
     "hbs": "^4.2.0",
     "mapbox-gl": "^2.7.0",
+    "nodemon": "^2.0.15",
     "request": "^2.88.2"
   }
 }

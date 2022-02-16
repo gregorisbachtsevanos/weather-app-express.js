@@ -2,7 +2,8 @@ const path = require('path')
 
 const express = require('express');
 const app = express();
-const hbs = require('hbs')
+const hbs = require('hbs');
+const port = process.env.PORT || 3000;
 
 const functions = require('./utils/functions')
 
@@ -54,6 +55,6 @@ app.get('*', (req, res) => {
 	})
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
 	console.log("Server listening...")
 })
